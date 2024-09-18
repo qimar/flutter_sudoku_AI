@@ -13,7 +13,7 @@
   "levelMedium": "Moyen",
   "levelHard": "Ardu",
   "levelExpert": "Expert",
-  "sudokuGenerateText": "Chargement du sudoku pour vous, veuillez patienter...",
+  "sudokuGenerateText": "Chargement du jeu...",
 
   "gameStatusInitialize" : "Init",
   "gameStatusGaming" : "En cours",

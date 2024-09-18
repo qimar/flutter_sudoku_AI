@@ -13,7 +13,7 @@
   "levelMedium": "Medium",
   "levelHard": "Hard",
   "levelExpert": "Expert",
-  "sudokuGenerateText": "Waiting for sudoku generated...",
+  "sudokuGenerateText": "Loading The Game...",
 
   "gameStatusInitialize" : "Initialize",
   "gameStatusGaming" : "Gaming",

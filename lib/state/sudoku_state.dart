@@ -17,8 +17,8 @@ final Logger log = Logger();
 ///
 /// global constant
 class _Default {
-  static const int life = 3;
-  static const int hint = 2;
+  static const int life = 6;
+  static const int hint = 6;
 }
 
 @HiveType(typeId: 6)

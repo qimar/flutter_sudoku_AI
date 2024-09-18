@@ -13,7 +13,7 @@
   "levelMedium": "中等",
   "levelHard": "困难",
   "levelExpert": "专家",
-  "sudokuGenerateText": "正在为你加载数独,请稍后...",
+  "sudokuGenerateText": "加载游戏...",
 
   "gameStatusInitialize" : "初始化",
   "gameStatusGaming" : "进行中",
