@@ -104,6 +104,8 @@ class SudokuState extends Model {
     this.sudoku = sudoku;
     this.level = level;
     this.timing = 0;
+    // this.life = _Default.life;
+    // this.hint = _Default.hint;
     this.life = _Default.life;
     this.hint = _Default.hint;
     this.record = List.generate(81, (index) => -1);

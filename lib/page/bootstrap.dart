@@ -101,17 +101,16 @@ Widget _newGameButton(BuildContext context) {
       context,
       (_) => CupertinoButton(
           color: Colors.blue,
-          child: Text(
-            AppLocalizations.of(context)!.menuNewGame,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
+          child: Text(AppLocalizations.of(context)!.menuNewGame,
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold)),
           onPressed: () {
             // cancel new game button
             Widget cancelButton = SizedBox(
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 child: Container(
-                    margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     child: CupertinoButton(
 //                      color: Colors.red,
                       child: Text(AppLocalizations.of(context)!.levelCancel),
@@ -129,11 +128,11 @@ Widget _newGameButton(BuildContext context) {
                   height: 60,
                   width: MediaQuery.of(context).size.width,
                   child: Container(
-                      margin: EdgeInsets.all(2.0),
+                      margin: const EdgeInsets.all(2.0),
                       child: CupertinoButton(
                         child: Text(
                           levelName,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         onPressed: () async {
                           log.d(
@@ -180,11 +179,11 @@ Future _sudokuGenerate(BuildContext context, Level level) async {
       barrierDismissible: false,
       builder: (context) => Dialog(
           child: Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Row(mainAxisSize: MainAxisSize.min, children: [
-                CircularProgressIndicator(),
+                const CircularProgressIndicator(),
                 Container(
-                    margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                     child: Text(sudokuGenerateText))
               ]))));
 
@@ -234,7 +233,7 @@ class _BootstrapPageState extends State<BootstrapPage> {
                   // new game
                   _newGameButton(context),
                   // ai solver scanner
-                  _aiSolverButton(context),
+                  // _aiSolverButton(context),
                 ]))
           ],
         ),

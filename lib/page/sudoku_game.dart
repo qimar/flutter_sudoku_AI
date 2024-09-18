@@ -667,12 +667,13 @@ class _SudokuGamePageState extends State<SudokuGamePage>
     };
   }
 
+  /// Main body widget of the game page using column layout
   Widget _bodyWidget(BuildContext context) {
     if (_state.sudoku == null) {
       return Container(
           color: Colors.white,
           alignment: Alignment.center,
-          child: Center(
+          child: const Center(
               child: Text('Sudoku Exiting...',
                   style: TextStyle(color: Colors.black),
                   textDirection: TextDirection.ltr)));
@@ -858,7 +859,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
     Scaffold scaffold = Scaffold(
       appBar: AppBar(title: Text(widget.title), actions: [
         IconButton(
-          icon: Icon(Icons.info_outline),
+          icon: const Icon(Icons.info_outline),
           onPressed: () {
             return _aboutDialogAction(context);
           },

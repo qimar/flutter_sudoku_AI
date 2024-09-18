@@ -108,7 +108,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
-            localizationsDelegates: [
+            localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
