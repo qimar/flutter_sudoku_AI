@@ -7,6 +7,7 @@ import 'package:sprintf/sprintf.dart';
 // import 'package:sudoku/state/hive/sudoku_type_adapter.dart';
 import 'package:sudoku_dart/sudoku_dart.dart';
 import 'package:sudoku_game/constant.dart';
+import 'package:sudoku_game/page/bootstrap.dart';
 import 'package:sudoku_game/state/hive/level_type_adapter.dart';
 import 'package:sudoku_game/state/hive/sudoku_type_adapter.dart';
 
@@ -100,14 +101,31 @@ class SudokuState extends Model {
   }
 
   void initialize({Level? level, Sudoku? sudoku}) {
+    // void initialize({Level? level, Sudoku? sudoku}) {
     status = SudokuGameStatus.initialize;
     this.sudoku = sudoku;
     this.level = level;
     this.timing = 0;
     // this.life = _Default.life;
     // this.hint = _Default.hint;
-    this.life = _Default.life;
-    this.hint = _Default.hint;
+    this.life = (level == Level.easy)
+        ? 6
+        : (level == Level.medium)
+            ? 5
+            : (level == Level.hard)
+                ? 4
+                : (level == Level.expert)
+                    ? 3
+                    : 6;
+    this.hint = (level == Level.easy)
+        ? 6
+        : (level == Level.medium)
+            ? 5
+            : (level == Level.hard)
+                ? 4
+                : (level == Level.expert)
+                    ? 3
+                    : 6;
     this.record = List.generate(81, (index) => -1);
     this.mark =
         List.generate(81, (index) => List.generate(10, (index) => false));

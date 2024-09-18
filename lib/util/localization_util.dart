@@ -5,10 +5,7 @@ import 'package:sudoku_dart/sudoku_dart.dart';
 
 /// LocalizationUtils
 class LocalizationUtils {
-  static String localizationLevelName(
-    BuildContext context,
-    Level level,
-  ) {
+  static String localizationLevelName(BuildContext context, Level level) {
     switch (level) {
       case Level.easy:
         return AppLocalizations.of(context)!.levelEasy;

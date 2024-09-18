@@ -124,6 +124,7 @@ Widget _newGameButton(BuildContext context) {
             Level.values.forEach((Level level) {
               String levelName =
                   LocalizationUtils.localizationLevelName(context, level);
+
               buttons.add(SizedBox(
                   height: 60,
                   width: MediaQuery.of(context).size.width,
@@ -149,9 +150,9 @@ Widget _newGameButton(BuildContext context) {
               builder: (context) {
                 return SafeArea(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Material(
-                        child: Container(
+                        child: SizedBox(
                             height: 300,
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -172,6 +173,7 @@ void _internalSudokuGenerate(List<dynamic> args) {
   sendPort.send(sudoku);
 }
 
+// Future _sudokuGenerate(BuildContext context, Level level) async {
 Future _sudokuGenerate(BuildContext context, Level level) async {
   String sudokuGenerateText = AppLocalizations.of(context)!.sudokuGenerateText;
   showDialog(
