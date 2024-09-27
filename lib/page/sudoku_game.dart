@@ -261,8 +261,10 @@ class _SudokuGamePageState extends State<SudokuGamePage>
       bool hasNumStock = _state.hasNumStock(num);
       var fillOnPressed;
       if (!hasNumStock) {
+        // generating number button
         fillOnPressed = null;
       } else {
+        // eraser button
         fillOnPressed = () async {
           log.d("input : $num");
           if (_isOnlyReadGrid(_chooseSudokuBox)) {
@@ -332,17 +334,19 @@ class _SudokuGamePageState extends State<SudokuGamePage>
       return Expanded(
           flex: 1,
           child: Container(
-              margin: EdgeInsets.all(2),
-              decoration: BoxDecoration(border: BorderDirectional()),
+              padding: const EdgeInsets.all(1),
+              margin: const EdgeInsets.only(
+                  top: 5, bottom: 5, left: 7.5, right: 7.5),
+              decoration: const BoxDecoration(border: BorderDirectional()),
               child: CupertinoButton(
                   color: _markOpen ? markBgColor : recordBgColor,
-                  padding: EdgeInsets.all(1),
+                  padding: const EdgeInsets.all(1),
+                  onPressed: fillOnPressed,
                   child: Text('${index + 1}',
                       style: TextStyle(
                           color: _markOpen ? markFontColor : recordFontColor,
                           fontSize: 20,
-                          fontWeight: FontWeight.bold)),
-                  onPressed: fillOnPressed)));
+                          fontWeight: FontWeight.w400)))));
     });
 
     fillTools.add(Expanded(
@@ -369,11 +373,11 @@ class _SudokuGamePageState extends State<SudokuGamePage>
                 }))));
 
     return Align(
-        alignment: Alignment.centerLeft,
-        child: Container(
-            height: 40,
+        alignment: Alignment.bottomCenter,
+        child: SizedBox(
+            height: 100,
             width: MediaQuery.of(context).size.width,
-            child: Row(children: fillTools)));
+            child: Wrap(alignment: WrapAlignment.center, children: fillTools)));
   }
 
   Widget _toolZone(BuildContext context) {
@@ -484,42 +488,66 @@ class _SudokuGamePageState extends State<SudokuGamePage>
       });
     };
     return Container(
-        height: 50,
-        padding: EdgeInsets.all(5),
+        height: 63,
+        padding: const EdgeInsets.all(5),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               // 暂停游戏 pause game button
               Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.bottomLeft,
                   child: CupertinoButton(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       onPressed: pauseOnPressed,
-                      child: Text(pauseText, style: TextStyle(fontSize: 15)))),
+                      child: Column(
+                        children: [
+                          const Icon(Icons.pause, size: 20),
+                          const SizedBox(height: 4),
+                          Text(pauseText, style: const TextStyle(fontSize: 15)),
+                        ],
+                      ))),
               // tips 提示
               Align(
                   alignment: Alignment.center,
                   child: CupertinoButton(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       onPressed: tipsOnPressed,
-                      child: Text(tipsText, style: TextStyle(fontSize: 15)))),
+                      child: Column(
+                        children: [
+                          const Icon(Icons.lightbulb, size: 20),
+                          const SizedBox(height: 4),
+                          Text(tipsText, style: const TextStyle(fontSize: 15)),
+                        ],
+                      ))),
               // mark 笔记
               Align(
                   alignment: Alignment.center,
                   child: CupertinoButton(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       onPressed: markOnPressed,
-                      child: Text(
-                          "${_markOpen ? closeMarkText : enableMarkText}",
-                          style: TextStyle(fontSize: 15)))),
-              // 退出
+                      child: Column(
+                        children: [
+                          const Icon(Icons.edit, size: 20),
+                          const SizedBox(height: 4),
+                          Text("${_markOpen ? closeMarkText : enableMarkText}",
+                              style: const TextStyle(fontSize: 15)),
+                        ],
+                      ))),
+              // Exit 退出
               Align(
                   alignment: Alignment.centerRight,
                   child: CupertinoButton(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       onPressed: exitGameOnPressed,
-                      child:
-                          Text(exitGameText, style: TextStyle(fontSize: 15))))
+                      child: Column(
+                        children: [
+                          const Icon(Icons.exit_to_app, size: 20),
+                          const SizedBox(height: 4),
+                          Text(exitGameText,
+                              style: const TextStyle(fontSize: 15)),
+                        ],
+                      )))
             ]));
   }
 
@@ -551,14 +579,14 @@ class _SudokuGamePageState extends State<SudokuGamePage>
     indexSet.addAll(colIndexes);
 
     if (index == _chooseSudokuBox) {
-      gridCellBackgroundColor = const Color.fromARGB(255, 0x70, 0xF3, 0xFF);
+      gridCellBackgroundColor = const Color.fromARGB(255, 59, 52, 201);
     } else if (indexSet.contains(_chooseSudokuBox)) {
-      gridCellBackgroundColor = const Color.fromARGB(255, 0x44, 0xCE, 0xF6);
+      gridCellBackgroundColor = const Color.fromARGB(255, 212, 215, 216);
     } else {
       if (Matrix.getZone(index: index).isOdd) {
         gridCellBackgroundColor = Colors.white;
       } else {
-        gridCellBackgroundColor = const Color.fromARGB(255, 0xCC, 0xCC, 0xCC);
+        gridCellBackgroundColor = const Color.fromARGB(255, 234, 234, 234);
       }
     }
     return gridCellBackgroundColor;
@@ -685,16 +713,19 @@ class _SudokuGamePageState extends State<SudokuGamePage>
           /// status zone
           /// life / tips / timer on here
           Container(
+            // color: Colors.cyan,
             height: 50,
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Row(children: <Widget>[
+              // Game Life Widget
               Expanded(
                   flex: 1,
                   child: Row(children: <Widget>[
                     lifePng,
-                    Text(" x ${_state.life}", style: TextStyle(fontSize: 18))
+                    Text(" x ${_state.life}",
+                        style: const TextStyle(fontSize: 18))
                   ])),
-              // indicator
+              // Game indicator [easy, medium, hard, expert] - timer - game status
               Expanded(
                 flex: 2,
                 child: Container(
@@ -702,7 +733,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
                     child: Text(
                         "${LocalizationUtils.localizationLevelName(context, _state.level!)} - ${_state.timer} - ${LocalizationUtils.localizationGameStatus(context, _state.status)}")),
               ),
-              // tips
+              // tips available in this game
               Expanded(
                   flex: 1,
                   child: Container(
@@ -711,7 +742,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
                           children: <Widget>[
                         ideaPng,
                         Text(" x ${_state.hint}",
-                            style: TextStyle(fontSize: 18))
+                            style: const TextStyle(fontSize: 18))
                       ])))
             ]),
           ),
@@ -748,9 +779,28 @@ class _SudokuGamePageState extends State<SudokuGamePage>
           /// user input zone
           /// use fillZone choose number fill cells or mark notes
           /// use toolZone to pause / exit game
-          Container(margin: EdgeInsets.fromLTRB(0, 5, 0, 5)),
-          _fillZone(context),
-          _toolZone(context)
+          Container(
+            margin:
+                const EdgeInsets.only(top: 10, bottom: 10, right: 8, left: 8),
+
+            // decoration: BoxDecoration(
+            //   borderRadius: BorderRadius.circular(10),
+            //   border: Border.all(color: Colors.black12),
+            // ),
+
+            // margin: const EdgeInsets.fromLTRB(0, 5, 0, 5)
+            child: Column(
+              children: <Widget>[
+                _toolZone(context),
+                const SizedBox(height: 5),
+                _fillZone(context),
+              ],
+            ),
+          )
+          // Container(
+          //     color: Colors.cyan, margin: EdgeInsets.fromLTRB(0, 5, 0, 5)),
+          // _fillZone(context),
+          // _toolZone(context)
         ],
       ),
     );

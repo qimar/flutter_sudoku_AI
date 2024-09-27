@@ -11,6 +11,7 @@ import 'package:scoped_model/scoped_model.dart';
 // import 'package:sudoku/state/sudoku_state.dart';
 // import 'package:sudoku/util/localization_util.dart';
 import 'package:sudoku_dart/sudoku_dart.dart';
+import 'package:sudoku_game/constant.dart';
 import 'package:sudoku_game/state/sudoku_state.dart';
 import 'package:sudoku_game/util/localization_util.dart';
 
@@ -30,7 +31,7 @@ class BootstrapPage extends StatefulWidget {
 Widget _buttonWrapper(
     BuildContext context, Widget childBuilder(BuildContext content)) {
   return Container(
-      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+      margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
       width: 300,
       height: 60,
       child: childBuilder(context));
@@ -76,17 +77,19 @@ Widget _continueGameButton(BuildContext context) {
           width: 300,
           height: 80,
           child: CupertinoButton(
+              // color: Constant.primarycolor,
+              borderRadius: BorderRadius.circular(200),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
                       child: Text(buttonLabel,
-                          style: TextStyle(
-                              color: Colors.blue,
+                          style: const TextStyle(
+                              color: Constant.primarycolor,
                               fontWeight: FontWeight.bold))),
                   Container(
-                      child:
-                          Text(continueMessage, style: TextStyle(fontSize: 13)))
+                      child: Text(continueMessage,
+                          style: const TextStyle(fontSize: 13)))
                 ],
               ),
               onPressed: () {
@@ -100,7 +103,8 @@ Widget _newGameButton(BuildContext context) {
   return _buttonWrapper(
       context,
       (_) => CupertinoButton(
-          color: Colors.blue,
+          borderRadius: BorderRadius.circular(200),
+          color: Constant.primarycolor,
           child: Text(AppLocalizations.of(context)!.menuNewGame,
               style: const TextStyle(
                   color: Colors.white, fontWeight: FontWeight.bold)),
@@ -110,10 +114,23 @@ Widget _newGameButton(BuildContext context) {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 child: Container(
-                    margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 127, 54, 244),
+                      borderRadius: BorderRadius.circular(200),
+                    ),
                     child: CupertinoButton(
-//                      color: Colors.red,
-                      child: Text(AppLocalizations.of(context)!.levelCancel),
+                      // color: Colors.red,
+                      child: Column(
+                        children: [
+                          // const Divider(),
+                          Text(AppLocalizations.of(context)!.levelCancel,
+                              style: const TextStyle(
+                                  // fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white)),
+                        ],
+                      ),
                       onPressed: () {
                         Navigator.of(context).pop(false);
                       },
@@ -129,11 +146,17 @@ Widget _newGameButton(BuildContext context) {
                   height: 60,
                   width: MediaQuery.of(context).size.width,
                   child: Container(
+                      // color: Colors.purple,
                       margin: const EdgeInsets.all(2.0),
+                      decoration: BoxDecoration(
+                        color: Constant.primarycolor,
+                        borderRadius: BorderRadius.circular(200),
+                      ),
                       child: CupertinoButton(
                         child: Text(
                           levelName,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                         onPressed: () async {
                           log.d(
@@ -152,10 +175,11 @@ Widget _newGameButton(BuildContext context) {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Material(
+                        // color: Colors.black,
                         child: SizedBox(
-                            height: 300,
+                            height: 320,
                             child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: buttons))),
                   ),
                 );
@@ -211,7 +235,7 @@ class _BootstrapPageState extends State<BootstrapPage> {
   Widget build(BuildContext context) {
     Widget body = Container(
       color: Colors.white,
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       child: Center(
         child: Column(
           children: <Widget>[
@@ -223,7 +247,7 @@ class _BootstrapPageState extends State<BootstrapPage> {
                     color: Colors.white,
                     width: 280,
                     height: 280,
-                    child: Image(
+                    child: const Image(
                       image: AssetImage("assets/image/logo.png"),
                     ))),
             Expanded(
@@ -236,7 +260,8 @@ class _BootstrapPageState extends State<BootstrapPage> {
                   _newGameButton(context),
                   // ai solver scanner
                   // _aiSolverButton(context),
-                ]))
+                ])),
+            const Divider(),
           ],
         ),
       ),

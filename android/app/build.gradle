@@ -57,3 +57,10 @@ android {
 flutter {
     source = "../.."
 }
+
+dependencies {
+    // Other dependencies, if any
+
+    // TensorFlow Lite GPU API
+    implementation 'org.tensorflow:tensorflow-lite-gpu-api:2.10.0'
+}
