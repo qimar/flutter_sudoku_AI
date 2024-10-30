@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239052411472",
+    "project_id": "sudoku-game-bc4b0",
+    "storage_bucket": "sudoku-game-bc4b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239052411472:android:f7bda6b4dd67be65b43755",
+        "android_client_info": {
+          "package_name": "com.sudoku_game.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQcyIP6cin3iPf44tW6BDRnkS26zYVCVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,6 @@
 {
-     "name": "SudoSolve",
-     "short_name": "SudoSolve",
+     "name": "Sudoku Saga",
+     "short_name": "Sudoku Saga",
      "start_url": ".",
      "display": "standalone",
      "background_color": "#0175C2",

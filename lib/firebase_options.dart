@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -50,19 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCavJIlZYS6YIKX1_zFzy_PhuB-O3VeO8E',
-    appId: '1:532244828552:android:e39beca8c81af1db936a3d',
-    messagingSenderId: '532244828552',
-    projectId: 'sudoku-6a968',
-    storageBucket: 'sudoku-6a968.appspot.com',
+    apiKey: 'AIzaSyCQcyIP6cin3iPf44tW6BDRnkS26zYVCVw',
+    appId: '1:239052411472:android:f7bda6b4dd67be65b43755',
+    messagingSenderId: '239052411472',
+    projectId: 'sudoku-game-bc4b0',
+    storageBucket: 'sudoku-game-bc4b0.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBfp5NRy3-0-RxpxncEB0sV9CoXRADiwZo',
-    appId: '1:532244828552:ios:7492785990cafe51936a3d',
-    messagingSenderId: '532244828552',
-    projectId: 'sudoku-6a968',
-    storageBucket: 'sudoku-6a968.appspot.com',
-    iosBundleId: 'com.sevlow.apps.sudoku',
+    apiKey: 'AIzaSyA6VoLSP7rcgOWJ22JhFeELbykIrIaxrTA',
+    appId: '1:239052411472:ios:70c818821d8f92c7b43755',
+    messagingSenderId: '239052411472',
+    projectId: 'sudoku-game-bc4b0',
+    storageBucket: 'sudoku-game-bc4b0.appspot.com',
+    iosBundleId: 'com.example.sudokuGame',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBxaryeMmOEP1czgSg9TIx_BY06JjeD1n0',
+    appId: '1:239052411472:web:9e6b8f5981bb92e8b43755',
+    messagingSenderId: '239052411472',
+    projectId: 'sudoku-game-bc4b0',
+    authDomain: 'sudoku-game-bc4b0.firebaseapp.com',
+    storageBucket: 'sudoku-game-bc4b0.appspot.com',
+    measurementId: 'G-036RZ0MSTT',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyA6VoLSP7rcgOWJ22JhFeELbykIrIaxrTA',
+    appId: '1:239052411472:ios:70c818821d8f92c7b43755',
+    messagingSenderId: '239052411472',
+    projectId: 'sudoku-game-bc4b0',
+    storageBucket: 'sudoku-game-bc4b0.appspot.com',
+    iosBundleId: 'com.example.sudokuGame',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyBxaryeMmOEP1czgSg9TIx_BY06JjeD1n0',
+    appId: '1:239052411472:web:176547c169d27ad8b43755',
+    messagingSenderId: '239052411472',
+    projectId: 'sudoku-game-bc4b0',
+    authDomain: 'sudoku-game-bc4b0.firebaseapp.com',
+    storageBucket: 'sudoku-game-bc4b0.appspot.com',
+    measurementId: 'G-0DVRBMF3WC',
+  );
+
 }

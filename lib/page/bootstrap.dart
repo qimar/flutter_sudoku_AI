@@ -114,7 +114,7 @@ Widget _newGameButton(BuildContext context) {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 child: Container(
-                    margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 127, 54, 244),
                       borderRadius: BorderRadius.circular(200),
