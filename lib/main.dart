@@ -122,6 +122,19 @@ class MyApp extends StatelessWidget {
               "/newGame": (context) => sudokuGamePage,
               "/gaming": (context) => sudokuGamePage
             },
+            builder: (context, child) {
+              final mediaQueryData = MediaQuery.of(context);
+              final scale = mediaQueryData.textScaler.clamp(
+                minScaleFactor: 1.0, // Minimum scale factor allowed.
+                maxScaleFactor: 1.3, // Maximum scale factor allowed.
+              );
+              return MediaQuery(
+                data: mediaQueryData.copyWith(
+                  textScaler: scale,
+                ),
+                child: child!,
+              );
+            },
           ),
         );
       },

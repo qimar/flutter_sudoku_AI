@@ -334,11 +334,14 @@ class _SudokuGamePageState extends State<SudokuGamePage>
               child: CupertinoButton(
                   color: _markOpen ? markBgColor : recordBgColor,
                   padding: EdgeInsets.all(1),
-                  child: Text('${index + 1}',
-                      style: TextStyle(
-                          color: _markOpen ? markFontColor : recordFontColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold)),
+                  child: Text(
+                    '${index + 1}',
+                    style: TextStyle(
+                      color: _markOpen ? markFontColor : recordFontColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   onPressed: fillOnPressed)));
     });
 
@@ -586,8 +589,10 @@ class _SudokuGamePageState extends State<SudokuGamePage>
           '${num == -1 ? '' : num}',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 25,
-            fontWeight: textFontWeight,
+            // fontSize: 25,
+            fontSize: 22,
+            // fontWeight: textFontWeight,
+            fontWeight: FontWeight.normal,
             color: textColor,
           ),
         ),
