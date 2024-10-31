@@ -25,8 +25,8 @@ final Logger log = Logger();
 final ButtonStyle flatButtonStyle = TextButton.styleFrom(
   foregroundColor: Colors.black54,
   shadowColor: Colors.blue,
-  minimumSize: Size(88, 36),
-  padding: EdgeInsets.symmetric(horizontal: 16.0),
+  minimumSize: const Size(88, 36),
+  padding: const EdgeInsets.symmetric(horizontal: 16.0),
   shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(3.0)),
   ),
@@ -36,8 +36,8 @@ final ButtonStyle primaryFlatButtonStyle = TextButton.styleFrom(
   foregroundColor: Colors.white,
   backgroundColor: Colors.lightBlue,
   shadowColor: Colors.blue,
-  minimumSize: Size(88, 36),
-  padding: EdgeInsets.symmetric(horizontal: 16.0),
+  minimumSize: const Size(88, 36),
+  padding: const EdgeInsets.symmetric(horizontal: 16.0),
   shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(3.0)),
   ),
@@ -60,7 +60,7 @@ const Image lifePng = Image(
 );
 
 class SudokuGamePage extends StatefulWidget {
-  SudokuGamePage({Key? key, required this.title}) : super(key: key);
+  const SudokuGamePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -77,15 +77,15 @@ class _SudokuGamePageState extends State<SudokuGamePage>
 
   _aboutDialogAction(BuildContext context) {
     Widget appIcon = GestureDetector(
-        child: Image(image: logoAssetImage, width: 45, height: 45),
+        child: const Image(image: logoAssetImage, width: 45, height: 45),
         onDoubleTap: () {
           WidgetBuilder columnWidget = (BuildContext context) {
             return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image(image: logoAssetImage),
+                  const Image(image: logoAssetImage),
                   CupertinoButton(
-                    child: Text("Sudoku"),
+                    child: const Text("Sudoku"),
                     onPressed: () {
                       Navigator.pop(context, false);
                     },
@@ -99,8 +99,8 @@ class _SudokuGamePageState extends State<SudokuGamePage>
         context: context,
         children: <Widget>[
           GestureDetector(
-            child: Text(
-              "Github Repository",
+            child: const Text(
+              "Suduko Repository",
               style: TextStyle(color: Colors.blue),
             ),
             onTap: () async {
@@ -119,12 +119,12 @@ class _SudokuGamePageState extends State<SudokuGamePage>
             },
           ),
           Container(
-              margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
-              padding: EdgeInsets.all(0),
-              child: Column(
+              margin: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+              padding: const EdgeInsets.all(0),
+              child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Sudoku powered by Flutter",
+                    Text("Sudoku powered by WackyApps",
                         style: TextStyle(fontSize: 12)),
                     Text(Constant.githubRepository,
                         style: TextStyle(fontSize: 12))
@@ -200,32 +200,34 @@ class _SudokuGamePageState extends State<SudokuGamePage>
                           flex: 2,
                           child: Column(children: [
                             Container(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   25.0, 0.0, 25.0, 0.0),
                               child: Text(conclusion,
-                                  style: TextStyle(fontSize: 16, height: 1.5)),
+                                  style: const TextStyle(
+                                      fontSize: 16, height: 1.5)),
                             ),
                             Container(
-                                margin: EdgeInsets.fromLTRB(0, 15, 0, 10),
+                                margin: const EdgeInsets.fromLTRB(0, 15, 0, 10),
                                 child: Text(
                                     "$elapsedTimeText : ${_state.timer}'s",
-                                    style: TextStyle(color: Colors.blue))),
+                                    style:
+                                        const TextStyle(color: Colors.blue))),
                             Container(
-                                padding: EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(10),
                                 child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Offstage(
                                           offstage: _state.status ==
                                               SudokuGameStatus.success,
-                                          child: IconButton(
+                                          child: const IconButton(
                                               icon: Icon(Icons.tv),
                                               onPressed: null)),
-                                      IconButton(
+                                      const IconButton(
                                           icon: Icon(Icons.thumb_up),
                                           onPressed: null),
                                       IconButton(
-                                          icon: Icon(Icons.exit_to_app),
+                                          icon: const Icon(Icons.exit_to_app),
                                           onPressed: () {
                                             Navigator.pop(context, "exit");
                                           })
@@ -300,7 +302,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
                     // sound stuff error
                     SoundEffect.stuffError();
                     return CupertinoAlertDialog(
-                      title: Text("Oops..."),
+                      title: const Text("Oops..."),
                       content: Text(wrongInputAlertText),
                       actions: [
                         CupertinoDialogAction(
@@ -329,11 +331,11 @@ class _SudokuGamePageState extends State<SudokuGamePage>
       return Expanded(
           flex: 1,
           child: Container(
-              margin: EdgeInsets.all(2),
-              decoration: BoxDecoration(border: BorderDirectional()),
+              margin: const EdgeInsets.all(2),
+              decoration: const BoxDecoration(border: BorderDirectional()),
               child: CupertinoButton(
                   color: _markOpen ? markBgColor : recordBgColor,
-                  padding: EdgeInsets.all(1),
+                  padding: const EdgeInsets.all(1),
                   child: Text(
                     '${index + 1}',
                     style: TextStyle(
@@ -393,7 +395,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
           PageRouteBuilder(
               opaque: false,
               pageBuilder: (BuildContext context, _, __) {
-                return SudokuPauseCoverPage();
+                return const SudokuPauseCoverPage();
               })).then((_) {
         _gaming();
 
@@ -455,7 +457,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
           builder: (context) {
             return AlertDialog(
                 title: Text(exitGameText,
-                    style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
                 content: Text(exitGameContentText),
                 actions: [
                   TextButton(
@@ -614,13 +616,13 @@ class _SudokuGamePageState extends State<SudokuGamePage>
         textColor = Colors.red;
       } else {
         // from user input num
-        textColor = Color.fromARGB(255, 0x16, 0x69, 0xA9);
+        textColor = const Color.fromARGB(255, 0x16, 0x69, 0xA9);
       }
     }
     final _cellContainer = Center(
       child: Container(
         alignment: Alignment.center,
-        margin: EdgeInsets.all(1),
+        margin: const EdgeInsets.all(1),
         decoration: BoxDecoration(
             color: _gridCellBgColor(index),
             border: Border.all(color: Colors.black12)),
@@ -656,15 +658,15 @@ class _SudokuGamePageState extends State<SudokuGamePage>
         onTap: onTap,
         child: Container(
             alignment: Alignment.center,
-            margin: EdgeInsets.all(1),
+            margin: const EdgeInsets.all(1),
             decoration: BoxDecoration(
                 color: _gridCellBgColor(index),
                 border: Border.all(color: Colors.black12)),
             child: GridView.builder(
                 padding: EdgeInsets.zero,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: 9,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3),
                 itemBuilder: (BuildContext context, int _index) {
                   String markNum =
@@ -674,7 +676,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
                       style: TextStyle(
                           color: _chooseSudokuBox == index
                               ? Colors.white
-                              : Color.fromARGB(255, 0x16, 0x69, 0xA9),
+                              : const Color.fromARGB(255, 0x16, 0x69, 0xA9),
                           fontSize: 12));
                 })));
 
@@ -700,7 +702,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
       return Container(
           color: Colors.white,
           alignment: Alignment.center,
-          child: Center(
+          child: const Center(
               child: Text('Sudoku Exiting...',
                   style: TextStyle(color: Colors.black),
                   textDirection: TextDirection.ltr)));
@@ -713,17 +715,20 @@ class _SudokuGamePageState extends State<SudokuGamePage>
           /// life / tips / timer on here
           Container(
             height: 50,
-            padding: EdgeInsets.all(10.0),
-            child: Row(children: <Widget>[
+            padding: const EdgeInsets.all(10.0),
+            child:
+                // Top row with game status bar, timer, level, life
+                Row(children: <Widget>[
               Expanded(
                   flex: 1,
                   child: Row(children: <Widget>[
                     lifePng,
-                    Text(" x ${_state.life}", style: TextStyle(fontSize: 18))
+                    Text(" x ${_state.life}",
+                        style: const TextStyle(fontSize: 18))
                   ])),
-              // indicator
+              // indicator of game level, timer and game play status
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: Container(
                     alignment: AlignmentDirectional.center,
                     child: Text(
@@ -732,25 +737,24 @@ class _SudokuGamePageState extends State<SudokuGamePage>
               // tips
               Expanded(
                   flex: 1,
-                  child: Container(
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
                         ideaPng,
                         Text(" x ${_state.hint}",
-                            style: TextStyle(fontSize: 18))
-                      ])))
+                            style: const TextStyle(fontSize: 18))
+                      ]))
             ]),
           ),
 
           /// 9 x 9 cells sudoku puzzle board
           /// the whole sudoku game draw it here
           GridView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: 81,
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 9),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 9),
               itemBuilder: ((BuildContext context, int index) {
                 int num = -1;
                 if (_state.sudoku?.puzzle.length == 81) {
@@ -864,7 +868,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
   void _beginTimer() {
     log.d("timer begin");
     if (_timer == null) {
-      _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
         if (_state.status == SudokuGameStatus.gaming) {
           _state.tick();
           return;
@@ -889,12 +893,12 @@ class _SudokuGamePageState extends State<SudokuGamePage>
     // log.d("on build");
     Scaffold scaffold = Scaffold(
       appBar: AppBar(title: Text(widget.title), actions: [
-        IconButton(
-          icon: Icon(Icons.info_outline),
-          onPressed: () {
-            return _aboutDialogAction(context);
-          },
-        )
+        // IconButton(
+        //   icon: const Icon(Icons.info_outline),
+        //   onPressed: () {
+        //     return _aboutDialogAction(context);
+        //   }
+        // )
       ]),
       body: _willPopWidget(
         context,
