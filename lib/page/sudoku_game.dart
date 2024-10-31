@@ -484,31 +484,66 @@ class _SudokuGamePageState extends State<SudokuGamePage>
     };
     return Container(
         // height: 60,
+        margin: const EdgeInsets.only(top: 10),
+        // color: Colors.cyan,
         padding: const EdgeInsets.all(5),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               // 暂停游戏 pause game button
               CupertinoButton(
-                  padding: EdgeInsets.all(5),
-                  onPressed: pauseOnPressed,
-                  child: Text(pauseText, style: TextStyle(fontSize: 15))),
+                padding: const EdgeInsets.all(5),
+                onPressed: pauseOnPressed,
+                child: Column(
+                  children: [
+                    const Icon(Icons.pause,
+                        size: 20, color: Color.fromARGB(255, 102, 102, 102)),
+                    Text(
+                      pauseText,
+                      style: const TextStyle(fontSize: 12),
+                    )
+                  ],
+                )
+                // Text(
+                //   pauseText,
+                //   style: const TextStyle(fontSize: 15),
+                // )
+                ,
+              ),
               // tips 提示
               CupertinoButton(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   onPressed: tipsOnPressed,
-                  child: Text(tipsText, style: TextStyle(fontSize: 15))),
+                  child: Column(
+                    children: [
+                      const Icon(Icons.lightbulb,
+                          size: 20, color: Color.fromARGB(255, 102, 102, 102)),
+                      Text(tipsText, style: const TextStyle(fontSize: 12)),
+                    ],
+                  )),
               // mark 笔记
               CupertinoButton(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   onPressed: exitGameOnPressed,
-                  child: Text(exitGameText, style: TextStyle(fontSize: 15))),
+                  child: Column(
+                    children: [
+                      const Icon(Icons.exit_to_app,
+                          size: 20, color: Color.fromARGB(255, 102, 102, 102)),
+                      Text(exitGameText, style: const TextStyle(fontSize: 12)),
+                    ],
+                  )),
               // 退出
               CupertinoButton(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   onPressed: markOnPressed,
-                  child: Text("${_markOpen ? closeMarkText : enableMarkText}",
-                      style: TextStyle(fontSize: 15)))
+                  child: Column(
+                    children: [
+                      const Icon(Icons.edit,
+                          size: 20, color: Color.fromARGB(255, 102, 102, 102)),
+                      Text("${_markOpen ? closeMarkText : enableMarkText}",
+                          style: const TextStyle(fontSize: 12)),
+                    ],
+                  ))
             ]));
   }
 
@@ -539,14 +574,18 @@ class _SudokuGamePageState extends State<SudokuGamePage>
     indexSet.addAll(colIndexes);
 
     if (index == _chooseSudokuBox) {
-      gridCellBackgroundColor = Color.fromARGB(255, 0x70, 0xF3, 0xFF);
+      // gridCellBackgroundColor = Color.fromARGB(255, 214, 238, 245);
+      gridCellBackgroundColor = const Color.fromARGB(60, 127, 54, 244);
     } else if (indexSet.contains(_chooseSudokuBox)) {
-      gridCellBackgroundColor = Color.fromARGB(255, 0x44, 0xCE, 0xF6);
+      // gridCellBackgroundColor = Color.fromARGB(255, 255, 219, 254);
+      // gridCellBackgroundColor = Color.fromARGB(255, 219, 255, 255);
+      gridCellBackgroundColor = const Color.fromARGB(100, 59, 52, 201);
     } else {
       if (Matrix.getZone(index: index).isOdd) {
         gridCellBackgroundColor = Colors.white;
       } else {
-        gridCellBackgroundColor = Color.fromARGB(255, 0xCC, 0xCC, 0xCC);
+        // gridCellBackgroundColor = Color.fromARGB(255, 255, 255, 255);
+        gridCellBackgroundColor = const Color.fromARGB(50, 175, 164, 164);
       }
     }
     return gridCellBackgroundColor;
@@ -563,7 +602,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
     List<int> record = _state.record;
     int num = puzzle[index];
 
-    Color textColor = Colors.blueGrey;
+    Color textColor = const Color.fromARGB(255, 0, 0, 0);
     FontWeight textFontWeight = FontWeight.w800;
     if (puzzle[index] == -1) {
       num = record[index];
@@ -737,7 +776,7 @@ class _SudokuGamePageState extends State<SudokuGamePage>
           Container(
               // color: Colors.cyan,
               margin:
-                  const EdgeInsets.only(top: 10, bottom: 5, right: 8, left: 8),
+                  const EdgeInsets.only(top: 15, bottom: 5, right: 2, left: 2),
               child: Column(
                 children: [_fillZone(context), _toolZone(context)],
               )),
