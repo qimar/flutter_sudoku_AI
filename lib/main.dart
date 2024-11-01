@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/sudoku_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:logger/logger.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:sudoku_game/effect/sound_effect.dart';
@@ -22,6 +23,9 @@ final Logger log = Logger();
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  // Initialize Google Mobile Ads SDK
+  MobileAds.instance.initialize();
+  // Set preferred orientation
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 

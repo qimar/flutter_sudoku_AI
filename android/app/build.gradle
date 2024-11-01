@@ -69,7 +69,7 @@ flutter {
 
 dependencies {
     // Other dependencies, if any
-
+    implementation 'com.google.android.gms:play-services-ads:23.3.0'
     // TensorFlow Lite GPU API
     implementation 'org.tensorflow:tensorflow-lite-gpu-api:2.10.0'
 }

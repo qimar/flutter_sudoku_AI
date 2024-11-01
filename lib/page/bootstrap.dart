@@ -256,6 +256,7 @@ class _BootstrapPageState extends State<BootstrapPage> {
                     Column(mainAxisAlignment: MainAxisAlignment.end, children: [
                   // continue the game
                   _continueGameButton(context),
+
                   // new game
                   _newGameButton(context),
                   // ai solver scanner

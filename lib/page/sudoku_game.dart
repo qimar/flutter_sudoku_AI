@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/sudoku_localizations.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:logger/logger.dart';
 import 'package:scoped_model/scoped_model.dart';
 // import 'package:sudoku/constant.dart';
@@ -13,6 +14,7 @@ import 'package:scoped_model/scoped_model.dart';
 // import 'package:sudoku/state/sudoku_state.dart';
 // import 'package:sudoku/util/localization_util.dart';
 import 'package:sudoku_dart/sudoku_dart.dart';
+import 'package:sudoku_game/admob/BannerAdWidget.dart';
 import 'package:sudoku_game/constant.dart';
 import 'package:sudoku_game/effect/sound_effect.dart';
 import 'package:sudoku_game/page/sudoku_pause_cover.dart';
@@ -784,8 +786,16 @@ class _SudokuGamePageState extends State<SudokuGamePage>
               child: Column(
                 children: [_fillZone(context), _toolZone(context)],
               )),
-          // _fillZone(context),
-          // _toolZone(context)
+          // Admob banner ad
+          Container(
+              // color: Colors.cyan,
+              margin: const EdgeInsets.only(top: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  BannerAdWidget(adSize: AdSize.banner),
+                ],
+              ))
         ],
       ),
     );
