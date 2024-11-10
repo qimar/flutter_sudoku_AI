@@ -13,8 +13,8 @@
 
 class AppConstants {
   // show test or production ads
-  static const bool showTestAds = true;
+  static const bool showTestAds = false;
 
   // interstitial ad showing intervale delay in seconds
-  static const int interstitialAdShowingInterval = 120;
+  static const int interstitialAdShowingInterval = 10;
 }

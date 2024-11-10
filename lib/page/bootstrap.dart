@@ -11,6 +11,7 @@ import 'package:scoped_model/scoped_model.dart';
 // import 'package:sudoku/state/sudoku_state.dart';
 // import 'package:sudoku/util/localization_util.dart';
 import 'package:sudoku_dart/sudoku_dart.dart';
+import 'package:sudoku_game/admob/ad_provider.dart';
 import 'package:sudoku_game/constant.dart';
 import 'package:sudoku_game/state/sudoku_state.dart';
 import 'package:sudoku_game/util/localization_util.dart';
@@ -44,26 +45,25 @@ Widget _aiSolverButton(BuildContext context) {
       child: _buttonWrapper(
           context,
           (content) => CupertinoButton(
-                color: Colors.blue,
-                child: Text("$buttonLabel (test)"),
-                onPressed: () async {
-                  log.d("AI Solver Scanner");
+              color: Colors.blue,
+              child: Text("$buttonLabel (test)"),
+              onPressed: () async {
+                log.d("AI Solver Scanner");
 
-                  WidgetsFlutterBinding.ensureInitialized();
+                WidgetsFlutterBinding.ensureInitialized();
 
-                  final cameras = await availableCameras();
-                  final firstCamera = cameras.first;
-                  final aiScanPage = AIScanPage(camera: firstCamera);
+                final cameras = await availableCameras();
+                final firstCamera = cameras.first;
+                final aiScanPage = AIScanPage(camera: firstCamera);
 
-                  Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                          opaque: false,
-                          pageBuilder: (BuildContext context, _, __) {
-                            return aiScanPage;
-                          }));
-                },
-              )));
+                Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                        opaque: false,
+                        pageBuilder: (BuildContext context, _, __) {
+                          return aiScanPage;
+                        }));
+              })));
 }
 
 Widget _continueGameButton(BuildContext context) {
@@ -99,6 +99,28 @@ Widget _continueGameButton(BuildContext context) {
   });
 }
 
+// Widget _ADBUTTON(BuildContext context) {
+//   return CupertinoButton(
+//       borderRadius: BorderRadius.circular(200),
+//       color: Constant.primarycolor,
+//       child: const Text("AD",
+//           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+//       onPressed: () {
+//         final adProvider = AdProvider();
+//         if (adProvider.loadedInterstitialAd &&
+//             adProvider.isInterstitialAvailable) {
+//           adProvider.showInterstitialAd(
+//               onAdShowedFullScreen: (InterstitialAd) {},
+//               onAdDismissedFullScreen: (InterstitialAd) {
+//                 Navigator.popAndPushNamed(context, "/gaming");
+//               },
+//               onAdFailedToShowFullScreen: (InterstitialAd, AdError) {
+//                 Navigator.pushNamed(context, "/gaming");
+//               });
+//         }
+//       });
+// }
+
 Widget _newGameButton(BuildContext context) {
   return _buttonWrapper(
       context,
@@ -109,9 +131,9 @@ Widget _newGameButton(BuildContext context) {
               style: const TextStyle(
                   color: Colors.white, fontWeight: FontWeight.bold)),
           onPressed: () {
-            // cancel new game button
+            // cancel new game button yy2
             Widget cancelButton = SizedBox(
-                height: 60,
+                height: 64,
                 width: MediaQuery.of(context).size.width,
                 child: Container(
                     margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
@@ -254,6 +276,8 @@ class _BootstrapPageState extends State<BootstrapPage> {
                 flex: 1,
                 child:
                     Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+                  // ad button
+                  // _ADBUTTON(context),
                   // continue the game
                   _continueGameButton(context),
 

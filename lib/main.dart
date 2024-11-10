@@ -21,10 +21,17 @@ import 'ml/detector.dart';
 
 final Logger log = Logger();
 
+List<String> testDeviceIds = ['828EEF186896A07E11E2CB4AD8DEE9F7'];
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize Google Mobile Ads SDK
   MobileAds.instance.initialize();
+
+  RequestConfiguration configuration =
+      RequestConfiguration(testDeviceIds: testDeviceIds);
+  MobileAds.instance.updateRequestConfiguration(configuration);
+
   // Set preferred orientation
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -108,6 +115,7 @@ class MyApp extends StatelessWidget {
           model: sudokuState,
           child: MaterialApp(
             title: 'Sudoku',
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch: Colors.blue,
               visualDensity: VisualDensity.adaptivePlatformDensity,

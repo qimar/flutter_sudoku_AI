@@ -7,7 +7,7 @@ class AdManager {
   static String appIdProd = 'ca-app-pub-9521754657463723~8392110509';
   static String bannerIdProd = 'ca-app-pub-9521754657463723/2181925373';
   static String interstitialIdProd = 'ca-app-pub-9521754657463723/7242680369';
-  static String rewardIdProd = 'ca-app-pub-9521754657463723/5730390438';
+  static String rewardIdProd = 'ca-app-pub-9521754657463723/9028504944';
 
 /**
  * Test Ids
